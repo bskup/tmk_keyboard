@@ -2,8 +2,6 @@
 #include "actionmap.h"
 #include "hook.h"
 #include "fc660c.h"
-#include "timer.h"
-
 
 #define AC_L2		ACTION_LAYER_MOMENTARY(2)
 #define AC_L3       ACTION_LAYER_MOMENTARY(3)
@@ -39,9 +37,9 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
         TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,     DEL,
         LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,
         LS_2,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,        RS_2,UP,
-        CTLF5, LGUI,LALT3,          SPC5,                 L7,RCTL,L3,  LEFT,DOWN,RGHT
+        CTLF5, LGUI,LALT3,          SPC,                 L7,RCTL,L3,  LEFT,DOWN,RGHT
     ),
-	// Default/same as layer0 with Insert LED on
+	// Default/same as layer0, except Insert LED on and spacebar behavior changed
     [1] = KMAP(
         ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC,     HOME,
         TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,     DEL,
