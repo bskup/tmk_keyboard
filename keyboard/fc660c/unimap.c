@@ -172,6 +172,7 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
                 send_keyboard_report();
 				// Toggle layer 1, (if on turn off, if off turn on)
 				layer_invert(1);
+				break;
             } else {
 			}
 		case CAPS_W_LED:
