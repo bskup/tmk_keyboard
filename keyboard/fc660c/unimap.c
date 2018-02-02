@@ -18,6 +18,20 @@
 #define AC_BACK     ACTION_MODS_KEY(MOD_LALT, KC_LEFT)
 #define AC_FRWD     ACTION_MODS_KEY(MOD_LALT, KC_RIGHT)
 #define AC_CTLF5	ACTION_MODS_TAP_KEY(MOD_LCTL, KC_F5)
+#define AC_CTLBS	ACTION_MODS_TAP_KEY(MOD_RCTL, KC_BSPC)
+
+#define AC_SH_9		ACTION_MODS_TAP_KEY(MOD_LSFT, KC_9)
+#define AC_SH_0		ACTION_MODS_TAP_KEY(MOD_LSFT, KC_0)
+#define AC_SH_MINS	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_MINS)
+#define AC_SH_EQL	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_EQL)
+#define AC_SH_LBRC	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_LBRC)
+#define AC_SH_RBRC	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_RBRC)
+#define AC_SH_BSLS	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_BSLS)
+#define AC_SH_SCLN	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_SCLN)
+#define AC_SH_QUOT	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_QUOT)
+#define AC_SH_COMM	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_COMM)
+#define AC_SH_DOT	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_DOT)
+#define AC_SH_SLSH	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_SLSH)
 
 #define AC_ALT_TAB	ACTION_MACRO(1)
 #define AC_HELLO	ACTION_MACRO(2)
@@ -45,9 +59,9 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
         TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,     DEL,
         LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,
         LS_2,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,         RS_2,UP,
-        CTLF5, LGUI,LALT3,          SPC5,                 L2,RCTL,L3,  LEFT,DOWN,RGHT
+        CTLF5, LGUI,LALT3,          SPC5,                 L7,RCTL,L3,  LEFT,DOWN,RGHT
     ),
-	// Just for shift+esc to make grave, everything else falls through to default layers (0, 1, and 2)
+	// Just for shift+esc to make grave, everything else falls through to default layers (0 and 1)
     [2] = KMAP(
         GRV, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,
@@ -55,13 +69,15 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,
         TRNS,TRNS,TRNS,          TRNS,                    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS
     ),
+	// Holding Fn takes us here
     [3] = KMAP(
-        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,    FN0,
+        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, CTLBS,    FN0,
         TAB,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS,TRNS,TRNS,TRNS,     TRNS,
         FN1,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,HOME,PGUP,TRNS,TRNS,     TRNS,
         TRNS,MUTE,VOLD,VOLU,TRNS,TRNS,TRNS,TRNS,END, PGDN,TRNS,          TRNS,PGUP,
         L3,  TRNS,TRNS,          TRNS,                    TRNS,APP, L3,  HOME,PGDN,END
     ),
+	// TODO: Can we even get here? Remove this layer if not..
     [4] = KMAP(
         ESC, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,     TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS,TRNS,TRNS,TRNS,     TRNS,
@@ -69,13 +85,15 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,END, PGDN,TRNS,          TRNS,PGUP,
         L4,  TRNS,TRNS,          TRNS,                    TRNS,APP, L4,  HOME,PGDN,END
     ),
+	// Holding spacebar while in layer 1 brings us here
     [5] = KMAP(
-        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, GRV,      TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,WH_L,WH_D,MS_U,WH_U,WH_R,BTN4,BTN5,TRNS,     TRNS,
-        TRNS,VOLD,VOLU,MUTE,TRNS,TRNS,TRNS,MS_L,MS_D,MS_R,BTN1,TRNS,     TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,BTN3,BTN2,BTN1,BACK,FRWD,TRNS,          TRNS,PGUP,
+        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, SH_MINS, SH_EQL, CTLBS,      TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SH_LBRC,SH_RBRC,SH_BSLS,     TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SH_SCLN,SH_QUOT,    TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SH_COMM,SH_DOT,SH_SLSH,  TRNS,PGUP,
         TRNS,TRNS,TRNS,          TRNS,                    TRNS,TRNS,TRNS,HOME,PGDN,END
     ),
+	// TODO: Can we get to this layer either? What is this for?
     [6] = KMAP(
         GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,     TRNS,
         TRNS,HOME,PGDN,UP,  PGUP,END, HOME,PGDN,PGUP,END, TRNS,TRNS,TRNS,TRNS,     TRNS,
@@ -93,6 +111,14 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
     ),
 };
 
+// Saved for later mouse control layer in case we want it back
+// [5] = KMAP(
+//        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, GRV,      TRNS,
+//       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,WH_L,WH_D,MS_U,WH_U,WH_R,BTN4,BTN5,TRNS,     TRNS,
+//        TRNS,VOLD,VOLU,MUTE,TRNS,TRNS,TRNS,MS_L,MS_D,MS_R,BTN1,TRNS,     TRNS,
+//       TRNS,TRNS,TRNS,TRNS,TRNS,BTN3,BTN2,BTN1,BACK,FRWD,TRNS,          TRNS,PGUP,
+//       TRNS,TRNS,TRNS,          TRNS,                    TRNS,TRNS,TRNS,HOME,PGDN,END
+//   ),
 
 // Not using now but leaving here to remember how to do it...
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
