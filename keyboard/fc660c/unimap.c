@@ -11,7 +11,6 @@
 #define AC_RS_1     ACTION_LAYER_MODS(1, MOD_RSFT)
 #define AC_RS_2     ACTION_LAYER_MODS(2, MOD_RSFT)
 #define AC_TGL1     ACTION_LAYER_TOGGLE(1)
-#define AC_SPC5     ACTION_LAYER_TAP_KEY(5, KC_SPC)
 #define AC_SLS6     ACTION_LAYER_TAP_KEY(6, KC_SLSH)
 #define AC_LALT3	ACTION_LAYER_MODS(3, MOD_LALT)
 
@@ -20,6 +19,10 @@
 #define AC_CTLF5	ACTION_MODS_TAP_KEY(MOD_LCTL, KC_F5)
 #define AC_CTLBS	ACTION_MODS_TAP_KEY(MOD_RCTL, KC_BSPC)
 
+// TODO try action mods tap key here without going to layer 5
+#define AC_SPC5     ACTION_LAYER_TAP_KEY(5, KC_SPC)
+
+/*TODO Change these to function actions, keeping in case I was wrong
 #define AC_SH_9		ACTION_MODS_TAP_KEY(MOD_LSFT, KC_9)
 #define AC_SH_0		ACTION_MODS_TAP_KEY(MOD_LSFT, KC_0)
 #define AC_SH_MINS	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_MINS)
@@ -31,7 +34,7 @@
 #define AC_SH_QUOT	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_QUOT)
 #define AC_SH_COMM	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_COMM)
 #define AC_SH_DOT	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_DOT)
-#define AC_SH_SLSH	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_SLSH)
+#define AC_SH_SLSH	ACTION_MODS_TAP_KEY(MOD_LSFT, KC_SLSH)*/
 
 #define AC_ALT_TAB	ACTION_MACRO(1)
 #define AC_HELLO	ACTION_MACRO(2)
@@ -39,6 +42,8 @@
 
 #define AC_FN0		ACTION_FUNCTION(0)
 #define AC_FN1		ACTION_FUNCTION(1)
+#define AC_FN2		ACTION_FUNCTION(2)
+//TODO Try function actions for Shift+brackets etc again
 
 // Keymaps are a mixture of Hasu's 660c keymaps, stock 660c, and me
 #ifdef KEYMAP_SECTION_ENABLE
@@ -48,18 +53,18 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
 #endif
     [0] = KMAP( \
         ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC,     HOME,
-        TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,     DEL,
-        LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,
-        LS_2,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,        RS_2,UP,
-        CTLF5, LGUI,LALT3,          SPC,                 L7,RCTL,L3,  LEFT,DOWN,RGHT
+        TAB,  Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,     DEL,
+        CTLF5,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,
+        LS_2, Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,      RS_2,UP,
+        LCTL, LGUI,LALT3,          SPC,                 L7,RCTL,L3,LEFT,DOWN,RGHT
     ),
 	// Default/same as layer0, except Insert LED on and spacebar behavior changed
     [1] = KMAP(
         ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC,     HOME,
         TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,     DEL,
-        LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,
+        CTLF5,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,
         LS_2,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,         RS_2,UP,
-        CTLF5, LGUI,LALT3,          SPC5,                 L7,RCTL,L3,  LEFT,DOWN,RGHT
+        LCTL, LGUI,LALT3,          SPC5,              L7,RCTL,L3,  LEFT,DOWN,RGHT
     ),
 	// Just for shift+esc to make grave, everything else falls through to default layers (0 and 1)
     [2] = KMAP(
@@ -71,7 +76,7 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
     ),
 	// Holding Fn takes us here
     [3] = KMAP(
-        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, CTLBS,    FN0,
+        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, FN2,    FN0,
         TAB,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS,TRNS,TRNS,TRNS,     TRNS,
         FN1,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,HOME,PGUP,TRNS,TRNS,     TRNS,
         TRNS,MUTE,VOLD,VOLU,TRNS,TRNS,TRNS,TRNS,END, PGDN,TRNS,          TRNS,PGUP,
@@ -87,10 +92,10 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
     ),
 	// Holding spacebar while in layer 1 brings us here
     [5] = KMAP(
-        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, SH_MINS, SH_EQL, CTLBS,      TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SH_LBRC,SH_RBRC,SH_BSLS,     TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SH_SCLN,SH_QUOT,    TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SH_COMM,SH_DOT,SH_SLSH,  TRNS,PGUP,
+        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  TRNS,  TRNS, TRNS, TRNS, FN2,      TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,         TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,    TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,        PGUP,
         TRNS,TRNS,TRNS,          TRNS,                    TRNS,TRNS,TRNS,HOME,PGDN,END
     ),
 	// TODO: Can we get to this layer either? What is this for?
@@ -136,14 +141,19 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 			return (record->event.pressed ?
 					MACRO( CM(), T(MEDIA_PLAY_PAUSE), END ) :
 					MACRO_NONE );
+		case 4:
+			return (record->event.pressed ?
+					MACRO( D(RCTL), T(BSPC), U(RCTL), END ) :
+					MACRO_NONE );
     }
     return MACRO_NONE;
 }
 
-/* id for user defined functions ??? */
+/* id for user defined functions, don't have to define if it's not a custom function action */
 enum function_id {
     INS_TGL_1,
-	CAPS_W_LED
+	CAPS_W_LED,
+	CTL_BSPC
 };
 
 // Use function actions somehow to create Fn+Ins = Ins + Toggle Layer 1
@@ -170,7 +180,9 @@ const action_t fn_actions[] PROGMEM = {
 //  [x] = ACTION_LMOD_TAP_KEY(KC_LCTL, KC_BSPC),        // LControl with tap Backspace
 //  [x] = ACTION_LMOD_TAP_KEY(KC_LCTL, KC_ESC),         // LControl with tap Esc
     [0] = ACTION_FUNCTION(INS_TGL_1),	       	    	// Function: Hit Ins and toggle layer 1
-	[1] = ACTION_FUNCTION(CAPS_W_LED)					// Function: Toggle Caps Lock and Caps Lock LED
+	[1] = ACTION_FUNCTION(CAPS_W_LED),					// Function: Toggle Caps Lock and Caps Lock LED
+	[2] = ACTION_MODS_KEY(MOD_RCTL, KC_BSPC),			// Macro: Hold Rctl and tap Backspace
+	
 //  [x] = ACTION_MACRO(HELLO),                          // Macro: say hello
 //  [x] = ACTION_MACRO(VOLUP),                          // Macro: media key
 };
@@ -220,9 +232,21 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
 					DDRB |=  (1<<5);
 					// Set my_led_status back to 0 to indicate LED is off
 					my_led_status = 0;
+					break;
 				}
-				
 			}
+		case CTL_BSPC:
+            // If the key we assigned this to is pressed
+            if (record->event.pressed) {
+                // Press RCTL+BSPC
+				register_code(KC_RCTL);
+				register_code(KC_BSPC);
+				send_keyboard_report();
+				unregister_code(KC_RCTL);
+				unregister_code(KC_BSPC);
+                send_keyboard_report();
+				break;
+            }
     }
 }
 
