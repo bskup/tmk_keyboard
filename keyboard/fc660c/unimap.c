@@ -13,6 +13,7 @@
 #define AC_TGL1     ACTION_LAYER_TOGGLE(1)
 #define AC_SLS6     ACTION_LAYER_TAP_KEY(6, KC_SLSH)
 #define AC_LALT3	ACTION_LAYER_MODS(3, MOD_LALT)
+#define AC_LALT7	ACTION_LAYER_MODS(7, MOD_LALT)
 
 #define AC_BACK     ACTION_MODS_KEY(MOD_LALT, KC_LEFT)
 #define AC_FRWD     ACTION_MODS_KEY(MOD_LALT, KC_RIGHT)
@@ -56,7 +57,7 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
         TAB,  Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,     DEL,
         CTLF5,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,
         LS_2, Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,      RS_2,UP,
-        LCTL, LGUI,LALT3,          SPC,                 L7,RCTL,L3,LEFT,DOWN,RGHT
+        LCTL, LGUI,LALT7,          SPC,                 L7,RCTL,L3,LEFT,DOWN,RGHT
     ),
 	// Default/same as layer0, except Insert LED on and spacebar behavior changed
     [1] = KMAP(
@@ -64,7 +65,7 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
         TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,     DEL,
         CTLF5,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,
         LS_2,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,         RS_2,UP,
-        LCTL, LGUI,LALT3,          SPC5,              L7,RCTL,L3,  LEFT,DOWN,RGHT
+        LCTL, LGUI,LALT7,          SPC5,              L7,RCTL,L3,  LEFT,DOWN,RGHT
     ),
 	// Just for shift+esc to make grave, everything else falls through to default layers (0 and 1)
     [2] = KMAP(
@@ -98,13 +99,13 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,        PGUP,
         TRNS,TRNS,TRNS,          TRNS,                    TRNS,TRNS,TRNS,HOME,PGDN,END
     ),
-	// TODO: Can we get to this layer either? What is this for?
-    [6] = KMAP(
-        GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,     TRNS,
-        TRNS,HOME,PGDN,UP,  PGUP,END, HOME,PGDN,PGUP,END, TRNS,TRNS,TRNS,TRNS,     TRNS,
-        TRNS,TRNS,LEFT,DOWN,RGHT,TRNS,LEFT,DOWN,UP,  RGHT,TRNS,TRNS,     TRNS,
-        TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,HOME,PGDN,PGUP,END, TRNS,     TRNS,PGUP,
-        TRNS,TRNS,TRNS,          TRNS,                    TRNS,TRNS,TRNS,HOME,PGDN,END
+	// Using Lalt + keys besides volume controls will fall through to this default map
+    [6] = KMAP( \
+        ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC,     HOME,
+        TAB,  Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,     DEL,
+        CTLF5,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,
+        LS_2, Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,      RS_2,UP,
+        LCTL, LGUI,LALT3,          SPC,                 L7,RCTL,L3,LEFT,DOWN,RGHT
     ),
 	// Right alt takes you here for media controls
 	[7] = KMAP(
