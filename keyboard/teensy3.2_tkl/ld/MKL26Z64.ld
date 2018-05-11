@@ -103,3 +103,4 @@ __eeprom_workarea_end__   = __eeprom_workarea_start__ + __eeprom_workarea_size__
 
 /* Generic rules inclusion.*/
 INCLUDE rules.ld
+INCLUDE rules.ld
